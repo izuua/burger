@@ -4,10 +4,6 @@ var router = express.Router();
 
 var burger = require('../models/burger.js');
 
-// express.static('public');
-
-// app.use(express.static('public'));
-
 
 router.get('/', function (req, res) {
     burger.selectAll(function (data) {
