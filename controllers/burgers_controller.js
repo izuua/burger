@@ -8,7 +8,6 @@ var burger = require('../models/burger.js');
 
 // app.use(express.static('public'));
 
-// http://localhost:808/assets/img/cheeseburger-34315.png;
 
 router.get('/', function (req, res) {
     burger.selectAll(function (data) {
