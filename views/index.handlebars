@@ -7,7 +7,18 @@
 <h3 class='center'>Menu</h3>
 
 <ul>
-    {{#each burgers}}
-      <div class='center'>{{burger_name}}</div>
-    {{/each}}
+  {{#each burgers}}
+  <div class='center'>{{burger_name}}
+    <button class='delete' data-id='id'>EAT!</button>
+  </div>
+  {{/each}}
 </ul>
+
+<form class='create-form center'>
+  <div class="form-group center">
+    <label for='burger'>Burger Name:</label>
+    <input type='text' id='burger' name='name'>
+  </div>
+  <button type='submit' class='create'>Add Burger</button>
+</form>
+

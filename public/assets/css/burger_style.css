@@ -9,3 +9,7 @@ img {
 .center {
     text-align: center;
 }
+
+button {
+    margin: 10px;
+}
