@@ -19,6 +19,29 @@
     <label for='burger'>Burger Name:</label>
     <input type='text' id='burger' name='name'>
   </div>
-  <button type='submit' class='create'>Add Burger</button>
+  <button type='submit'>Add Burger</button>
 </form>
 
+<script>
+  $(function () {
+
+    $('.create-form').on('submit', function (event) {
+      event.preventDefault();
+
+      var newBurger = {
+        burger_name: $('#burger').val().trim(),
+        devoured: 0
+      }
+
+      $.ajax('/api/burgers', {
+        type: 'POST',
+        data: newBurger
+      }).then(function() {
+          console.log('created new burger');
+          location.reload;
+        }
+      )
+
+    })
+  })
+</script>
