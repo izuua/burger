@@ -8,9 +8,11 @@
 
 <ul>
   {{#each burgers}}
+  {{#unless devoured}}
   <div class='center'>{{burger_name}}
-    <button class='delete' data-id='id'>EAT!</button>
+    <button class='devour' data-id={{id}}>EAT!</button>
   </div>
+  {{/unless}}
   {{/each}}
 </ul>
 
@@ -36,12 +38,28 @@
       $.ajax('/api/burgers', {
         type: 'POST',
         data: newBurger
-      }).then(function() {
-          console.log('created new burger');
-          location.reload;
-        }
+      }).then(function () {
+        console.log('created new burger');
+        location.reload();
+      }
       )
 
+    })
+
+    $('.devour').on('click', function (event) {
+      var id = $(this).data('id');
+      console.log('button pressed')
+      
+
+      $.ajax("/api/burgers/" + id, {
+        type: 'PUT',
+        data: {
+          devoured: 1
+        }
+      }).then(function () {
+        console.log(`devoured burger ${id}`);
+        location.reload();
+      })
     })
   })
 </script>
